@@ -1,0 +1,70 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+body {
+    font-family: Arial, sans-serif; padding: 20px;
+}
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+</style>
+</head>
+<body>
+
+<h2>Login</h2>
+<form id="loginForm">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email"><br>
+    <span id="emailError" class="error"></span><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br>
+    <span id="passwordError" class="error"></span><br>
+
+    <button type="submit">Login</button>
+</form>
+
+<script>
+const form = document.getElementById('loginForm');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    let isValid = true;
+
+    // Validate Email
+    const email = document.getElementById('email').value;
+    const emailError = document.getElementById('emailError');
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email))
+    {
+        emailError.textContent = "Invalid email address.";
+        isValid = false;
+    }
+    else
+    {
+        emailError.textContent = "";
+    }
+
+    // Validate Password
+    const password = document.getElementById('password').value;
+    const passwordError = document.getElementById('passwordError');
+    if (password.length < 8)
+    {
+        passwordError.textContent = "Password must be at least 8 characters.";
+        isValid = false;
+    }
+    else
+    {
+        passwordError.textContent = "";
+    }
+
+    if (isValid) alert("Form submitted successfully!");
+});
+</script>
+</body>
+</html>
