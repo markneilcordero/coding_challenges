@@ -1,0 +1,41 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Searchable Product List</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+.product {
+    margin: 5px 0;
+}
+</style>
+</head>
+<body>
+
+<h2>Product List</h2>
+<input type="text" id="search" placeholder="Search for a product...">
+<div id="product-list">
+    <div class="product">Laptop</div>
+    <div class="product">Phone</div>
+    <div class="product">Tablet</div>
+    <div class="product">Monitor</div>
+    <div class="product">Mouse</div>
+</div>
+
+<script>
+const searchInput = document.getElementById('search');
+const products = document.querySelectorAll('.product');
+
+searchInput.addEventListener('input', function () {
+    const query = searchInput.value.toLowerCase();
+    products.forEach(product => {
+        product.style.display = product.textContent.toLowerCase().includes(query) ? 'block' : 'none';
+    });
+});
+</script>
+</body>
+</html>
