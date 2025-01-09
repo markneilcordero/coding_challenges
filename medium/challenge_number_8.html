@@ -1,0 +1,101 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Responsive Navbar</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+}
+.navbar a:hover {
+    background-color: #555;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    color: black;
+    min-width: 160px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    color: white;
+}
+.links {
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 600px)
+{
+    .links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    .navbar {
+        flex-wrap: wrap;
+    }
+    .menu-icon {
+        display: block;
+    }
+}
+</style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="brand">Brand Logo</div>
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+            <div class="dropdown">
+                <a href="#products">Products</a>
+                <div class="dropdown-content">
+                    <a href="#product1">Product 1</a>
+                    <a href="#product2">Product 2</a>
+                    <a href="#product3">Product 3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+function toggleMenu()
+{
+    const links = document.querySelector('.links');
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+}
+</script>
+</html>
