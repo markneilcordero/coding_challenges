@@ -1,0 +1,32 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Items</title>
+</head>
+<body>
+
+<input type="text" id="searchBox" placeholder="Search items...">
+<ul id="itemList">
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Cherry</li>
+    <li>Date</li>
+    <li>Grapes</li>
+</ul>
+
+<script>
+const searchBox = document.getElementById('searchBox');
+const itemList = document.getElementById('itemList');
+const items = Array.from(itemList.getElementsByTagName('li'));
+
+searchBox.addEventListener('input', function() {
+    const query = searchBox.value.toLowerCase();
+    items.forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(query) ? '' : 'none';
+    });
+});
+</script>
+</body>
+</html>
