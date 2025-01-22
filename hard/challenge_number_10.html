@@ -1,0 +1,39 @@
+<!Doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fetch API with PHP</title>
+</head>
+<body>
+
+<h1>User List</h1>
+<ul id="userList"></ul>
+
+<script>
+async function fetchUsers()
+{
+    try
+    {
+        const response = await fetch('challenge_number_10.php');
+        if (!response.ok) throw new Error('Error fetching users');
+
+        const users = await response.json();
+        const userList = document.getElementById('userList');
+
+        users.forEach(user => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `${user.id}: ${user.name}`;
+            userList.appendChild(listItem);
+        });
+    }
+    catch (error)
+    {
+        console.log('Error:', error);
+    }
+}
+
+fetchUsers();
+</script>
+</body>
+</html>
